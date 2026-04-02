@@ -1,0 +1,2 @@
+# KECERDASAN-BUATAN-
+Tugas
