@@ -1,1 +1,29 @@
 Tugas 1 Prolog 
+
+% Fakta
+lulusan_sd(anas).
+wni(anas).
+lahir(anas, 1952).
+daftar_pns(anas, 1985).
+
+% Aturan
+umur(Nama, Tahun, Umur) :-
+    lahir(Nama, TahunLahir),
+    Umur is Tahun - TahunLahir.
+
+% Tidak bisa jadi PNS jika umur > 35
+tidak_bisa_pns(Nama) :-
+    lulusan_sd(Nama),
+    wni(Nama),
+    daftar_pns(Nama, TahunDaftar),
+    umur(Nama, TahunDaftar, Umur),
+    Umur > 35.
+
+% Bisa jadi PNS jika tidak melanggar aturan
+bisa_pns(Nama) :-
+    \+ tidak_bisa_pns(Nama).
+
+% Pensiun jika umur >= 60
+pensiun(Nama, TahunSekarang) :-
+    umur(Nama, TahunSekarang, Umur),
+    Umur >= 60.
